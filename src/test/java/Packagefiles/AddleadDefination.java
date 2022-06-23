@@ -33,7 +33,7 @@ public class AddleadDefination {
     }
 
 
-    
+
     @When("User is successfully logged in with email {string} & password as {string} on {string}")
     public void user_enter_the_email_as_password_as(String email1, String pass1, String url) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "E://Software/driver/chromedriver.exe");
@@ -60,9 +60,12 @@ public class AddleadDefination {
 
     }
 
-    @Then("User click on CPML Department")
-    public void user_click_on_cpml_department(){
-            SS.DepartmentText1();
+    @Then("User click on CPML {string} Department")
+    public void user_click_on_cpml_department(int index) throws InterruptedException {
+     // String titleof =   SS.DepartmentText1(index).getText();
+       // System.out.println("Title is: " +titleof);
+            SS.DepartmentText1(index);
+            Thread.sleep(5000);
 
     }
     @Then("User click on Project Advertising Department")

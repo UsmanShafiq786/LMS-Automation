@@ -6,6 +6,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.security.cert.X509Certificate;
+import java.util.List;
 
 public class Smokesuit {
     public WebDriver IDriver;
@@ -18,9 +19,14 @@ public class Smokesuit {
     @FindBy(xpath = "//div[@id='main-menu-wrapper']/ul[@class='department-menu']//i[@class='fa fa-database']")
     @CacheLookup
     WebElement Department;
-    @FindBy (xpath = "//div[@id='main-menu-wrapper']/ul[@class='department-menu']/li/ul/li[1]/a[@href='javascript:void(0);']")
+
+    @FindBy (className = "//ul[@class='sub-menu department-submenu']")
     @CacheLookup
-    WebElement Department1;
+    List<WebElement> Department1;
+
+//    @FindBy (xpath = "//div[@id='main-menu-wrapper']/ul[@class='department-menu']/li/ul/li[1]/a[@href='javascript:void(0);']")
+//    @CacheLookup
+//    WebElement Department1;
 
     @FindBy (xpath = "//div[@id='main-menu-wrapper']/ul[@class='department-menu']/li/ul/li[2]/a[@href='javascript:void(0);']/span[@class='title']")
 
@@ -47,12 +53,22 @@ public class Smokesuit {
     @CacheLookup
     WebElement Department7;
 
+    @FindBy(xpath = "//div[@id='main-menu-wrapper']/ul[@class='department-menu']/li/ul/li[6]/a[@href='javascript:void(0);']/span[@class='title']")
+    @CacheLookup
+    List<WebElement>  Abc;
 
- public void DepartmentText(){
+
+
+
+    public void DepartmentText(){
         Department.click();
     }
- public void DepartmentText1(){
-      Department1.click();
+ public void DepartmentText1(int index1) throws InterruptedException {
+
+        Thread.sleep(3000);
+        WebElement title = Department1.get(index1);
+     System.out.println("Title is: " +title.getText());
+        title.click();
  }
  public void DepartmentText2(){
          Department2.click();
